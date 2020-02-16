@@ -52,8 +52,6 @@
     for (let period = 0; period < periods; period++) {
       players.map((player) => player.periods[period] = false);
 
-      let colors = ['black', 'white', 'red', 'blue', 'yellow'];
-
       for (let i = 0; i < 5; i++) {
         players[playerIndex].periods[period] = true;
         playerIndex++;
@@ -63,7 +61,7 @@
       }
 
       if (useWristbands) {
-        colorCodePlayers(players, period, colors);
+        colorCodePlayers(players, period);
       } else {
         players.map((player) => { if (player.periods[period]) {player.periods[period] = 'white'}});
       }
@@ -72,10 +70,12 @@
     return players;
   };
 
-  const colorCodePlayers = (players, period, colors) => {
+  const colorCodePlayers = (players, period) => {
     const playersThisPeriod = players.filter((player) => player.periods[period]);
     const playersLastPeriod = (period === 0) ? [] : players.filter((player) => player.periods[period] && player.periods[period - 1]);
     const newPlayers = playersThisPeriod.filter((player) => playersLastPeriod.indexOf(player) < 0);
+
+    let colors = ['black', 'white', 'red', 'blue', 'yellow'];
 
     playersLastPeriod.map((player) => {
       const prevColor = player.periods[period - 1];

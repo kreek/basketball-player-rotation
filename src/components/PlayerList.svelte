@@ -1,11 +1,11 @@
 <script>
-  import { rotation } from "../rotation-store";
+  import {rotation} from "../rotation-store";
   import Player from "./Player.svelte";
 
   let players;
-	let periods;
-	let useWristbands;
-	let draggedPlayer;
+  let periods;
+  let useWristbands;
+  let draggedPlayer;
 
   rotation.subscribe(r => {
     periods = r.periods;
@@ -80,15 +80,15 @@
     <tbody>
     <tr>
       <th></th>
-      {#each playerPeriods[0].periods as player, i}
+			{#each playerPeriods[0].periods as player, i}
         <th class="text-gray-600">{i+1}</th>
-      {/each}
+			{/each}
     </tr>
-    {#each playerPeriods as player}
+		{#each playerPeriods as player}
       <tr>
-        <Player player={player} on:drag-start={onDragStart} on:drag-drop={onDragDrop} />
+        <Player player={player} on:drag-start={onDragStart} on:drag-drop={onDragDrop}/>
       </tr>
-    {/each}
+		{/each}
     </tbody>
   </table>
 {/if}

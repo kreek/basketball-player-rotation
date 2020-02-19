@@ -1,5 +1,14 @@
 <script>
-  export let addPlayer;
+  import { rotation } from "../rotation-store";
+
+  const addPlayer = (event) => {
+    const name = event.target.name.value;
+    if (name) {
+      rotation.addPlayer(name);
+      event.target.name.value = "";
+    }
+  };
+
 </script>
 
 <form class="form" on:submit|preventDefault="{addPlayer}">
@@ -8,7 +17,7 @@
       <label class="label" for="grid-first-name">
         Add Player
       </label>
-      <input id="name" class="input" type="text" placeholder="Name">
+      <input required id="name" class="input" type="text" placeholder="Name">
       <span>
         <button class="btn" type="submit">
           Add

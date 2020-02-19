@@ -1,19 +1,60 @@
 <script>
+  import { rotation } from "../rotation-store";
+  import { createEventDispatcher } from'svelte';
+
+  const dispatch = createEventDispatcher();
+
 	export let player;
-	export let removePlayer;
+
+  const removePlayer = () => {
+    rotation.removePlayer(player);
+  };
+
+  const onDragStart = () => {
+    dispatch('drag-start', player);
+  };
+
+  const onDrop = (e) => {
+    dispatch('drag-drop', player);
+    e.target.classList.remove('drag-enter');
+  };
+
+  const onDragEnter = (e) => {
+    e.target.classList.add('drag-enter');
+  };
+
+  const onDragLeave = (e) => {
+    e.target.classList.remove('drag-enter');
+  };
+
 </script>
 
-<tr>
-  <td class="name border-r">{player.name}</td>
-  {#each player.periods as period}
-    <td class="border-r"><div class="period {period ? "period-" + period : "period-blank"}"></div></td>
-  {/each}
-  <td><button class="btn btn-small btn-secondary ml-4" on:click={removePlayer(player)}>x</button></td>
-</tr>
+<td id={player.id}
+    draggable="true"
+    on:dragstart={onDragStart}
+    on:drop={onDrop}
+    on:dragenter={onDragEnter}
+    on:dragleave={onDragLeave}
+    ondragover="return false"
+    class="name border-r">
+  {player.name}
+</td>
+{#each player.periods as period}
+  <td class="border-r"><div class="period {period ? "period-" + period : "period-blank"}"></div></td>
+{/each}
+<td><button class="btn btn-small btn-secondary ml-4" on:click={removePlayer}>x</button></td>
 
 <style>
   .name {
     @apply text-right py-3 px-5
+  }
+
+  .name:hover {
+    cursor: move;
+  }
+
+  .drag-enter {
+    @apply bg-gray-800;
   }
 
   .border-r {
@@ -30,6 +71,10 @@
 
   .period-black {
     @apply bg-black;
+  }
+
+  .period-gray {
+    @apply bg-gray-200;
   }
 
   .period-white {

@@ -1,5 +1,5 @@
 <script>
-  import { rotation } from "../rotation-store";
+  import {rotation} from "../rotation-store";
 
   let useWristbands;
   let periods;

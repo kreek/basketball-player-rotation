@@ -6,9 +6,9 @@
 
 <main class="m-2 md:m-5">
   <h1 class="font-thin uppercase text-2xl md:text-3xl mt-4 mb-4">Player Rotation</h1>
-  <Options />
-  <PlayerList />
-  <AddPlayerForm />
+  <Options/>
+  <PlayerList/>
+  <AddPlayerForm/>
 </main>
 
 <style global>

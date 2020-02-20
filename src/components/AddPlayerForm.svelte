@@ -1,5 +1,5 @@
 <script>
-  import { rotation } from "../rotation-store";
+  import {rotation} from "../rotation-store";
 
   const addPlayer = (event) => {
     const name = event.target.name.value;

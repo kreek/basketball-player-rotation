@@ -1,10 +1,10 @@
 <script>
-  import { rotation } from "../rotation-store";
-  import { createEventDispatcher } from'svelte';
+  import {rotation} from "../rotation-store";
+  import {createEventDispatcher} from 'svelte';
 
   const dispatch = createEventDispatcher();
 
-	export let player;
+  export let player;
 
   const removePlayer = () => {
     rotation.removePlayer(player);
@@ -37,13 +37,17 @@
     on:dragleave={onDragLeave}
     ondragover="return false"
     class="name text-xs md:text-base border-r py-3 px-2 md:px-5">
-  {player.name}
+	{player.name}
 </td>
 {#each player.periods as period}
-  <td class="border-r"><div
-    class="w-3 h-3 md:w-8 md:h-8 mx-2 border md:border-2 rounded-full border-gray-600 {period ? "period-" + period : "period-blank"}"></div></td>
+  <td class="border-r">
+    <div
+      class="w-3 h-3 md:w-8 md:h-8 mx-2 border md:border-2 rounded-full border-gray-600 {period ? "period-" + period : "period-blank"}">
+    </div></td>
 {/each}
-<td><button class="btn text-xs py-1 px-2 btn-secondary ml-2 md:ml-4 md:px-3 md:py-1" on:click={removePlayer}>x</button></td>
+<td>
+  <button class="btn text-xs py-1 px-2 btn-secondary ml-2 md:ml-4 md:px-3 md:py-1" on:click={removePlayer}>x</button>
+</td>
 
 <style>
   .name {

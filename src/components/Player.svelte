@@ -36,17 +36,18 @@
     on:dragenter={onDragEnter}
     on:dragleave={onDragLeave}
     ondragover="return false"
-    class="name border-r">
+    class="name text-xs md:text-base border-r py-3 px-2 md:px-5">
   {player.name}
 </td>
 {#each player.periods as period}
-  <td class="border-r"><div class="period {period ? "period-" + period : "period-blank"}"></div></td>
+  <td class="border-r"><div
+    class="w-3 h-3 md:w-8 md:h-8 mx-2 border md:border-2 rounded-full border-gray-600 {period ? "period-" + period : "period-blank"}"></div></td>
 {/each}
-<td><button class="btn btn-small btn-secondary ml-4" on:click={removePlayer}>x</button></td>
+<td><button class="btn text-xs py-1 px-2 btn-secondary ml-2 md:ml-4 md:px-3 md:py-1" on:click={removePlayer}>x</button></td>
 
 <style>
   .name {
-    @apply text-right py-3 px-5
+    @apply text-right
   }
 
   .name:hover {
@@ -59,10 +60,6 @@
 
   .border-r {
     @apply border-r border-r border-gray-800 py-2
-  }
-
-  .period {
-		@apply h-8 w-8 mx-5 border-2 rounded-full border-gray-600;
   }
 
   .period-blank {

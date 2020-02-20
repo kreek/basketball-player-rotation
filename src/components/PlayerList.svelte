@@ -43,7 +43,7 @@
       }
 
       if (useWristbands) {
-        colorCodePlayers(players, period);
+        players = colorCodePlayers([...players], period);
       } else {
         players.map((player) => {
           if (player.periods[period]) {
@@ -70,18 +70,20 @@
     });
 
     newPlayers.map((player) => player.periods[period] = colors.shift());
+
+    return players;
   };
 
   $: playerPeriods = computePeriods(players);
 </script>
 
 {#if playerPeriods.length > 0}
-  <table class="table mb-10">
+  <table class="table mb-8 md:mb-10">
     <tbody>
     <tr>
-      <th></th>
+      <th class="m-0 p-0"></th>
 			{#each playerPeriods[0].periods as player, i}
-        <th class="text-gray-600">{i+1}</th>
+        <th class="text-xs md:text-base text-gray-600">{i+1}</th>
 			{/each}
     </tr>
 		{#each playerPeriods as player}

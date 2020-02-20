@@ -19,7 +19,7 @@
       </label>
       <input required id="name" class="input" type="text" placeholder="Name">
       <span>
-        <button class="btn" type="submit">
+        <button class="btn btn-primary" type="submit">
           Add
         </button>
       </span>

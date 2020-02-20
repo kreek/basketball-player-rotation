@@ -37,8 +37,8 @@
       wristbands
     </label>
     <input class="mr-1 leading-tight" type="checkbox" checked="{useWristbands}" on:change={onWristbandChange}>
-    <span class="text-sm">
-      Color coded wristbands for man-to-man defense
+    <span class="text-xs">
+      Show color wristbands
     </span>
   </div>
 </div>

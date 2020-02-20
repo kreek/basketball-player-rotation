@@ -4,8 +4,8 @@
   import Options from "./components/Options.svelte";
 </script>
 
-<main class="m-4">
-  <h1>Player Rotation</h1>
+<main class="m-2 md:m-5">
+  <h1 class="font-thin uppercase text-2xl md:text-3xl mt-4 mb-4">Player Rotation</h1>
   <Options />
   <PlayerList />
   <AddPlayerForm />
@@ -18,10 +18,6 @@
 
   body {
     @apply bg-gray-900 text-gray-500;
-  }
-
-  h1 {
-    @apply font-thin uppercase text-3xl mb-4;
   }
 
   .form {
@@ -45,7 +41,7 @@
   }
 
   .btn {
-    @apply bg-blue-500 border-none text-white font-bold py-1 px-4 rounded;
+    @apply bg-blue-500 border-none text-white font-bold rounded;
   }
 
   .btn:focus {
@@ -56,15 +52,15 @@
     @apply bg-orange-500;
   }
 
+  .btn-primary {
+    @apply py-1 px-4
+  }
+
   .btn-secondary {
     @apply bg-gray-800 text-gray-600;
   }
 
   .btn-secondary:hover {
     @apply text-white;
-  }
-
-  .btn-small {
-    @apply py-1 px-4;
   }
 </style>
